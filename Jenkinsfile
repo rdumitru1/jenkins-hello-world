@@ -24,6 +24,11 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
+                // Manually added to test a jenkins restart
+                for (int i =0; i < 60; i++) {
+                    echo "${i + 1}"
+                    sleep 1
+                }
                 sh "mvn test"
             }
         }
